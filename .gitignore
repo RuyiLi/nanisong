@@ -1,0 +1,13 @@
+_build/
+cover/
+deps/
+doc/
+tmp/
+
+.fetch
+erl_crash.dump
+*.ez
+bot-*.tar
+
+.env
+data/
