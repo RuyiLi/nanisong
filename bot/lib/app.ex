@@ -1,16 +1,19 @@
-defmodule MikuBeats do
-  use Supervisor
+defmodule MikuBeats.Application do
+  @moduledoc """
+  Entrypoint for MB.
+  TODO make application
+  TODO restructure so crashes dont mess everything up
+  """
 
-  def start_link(opts \\ []) do
-    Supervisor.start_link(__MODULE__, :ok, opts)
-  end
+  use Application
 
   @impl true
-  def init(:ok) do
+  def start(_type, _args) do
     children = [
       MikuBeats.Consumer,
-      # {MikuBeats.Registry, [name: MikuBeats.Queues]},
+      MikuBeats.Registry
     ]
-    Supervisor.init(children, strategy: :one_for_one)
+
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 end

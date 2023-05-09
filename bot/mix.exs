@@ -13,7 +13,8 @@ defmodule Bot.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {MikuBeats.Application, []}
     ]
   end
 
@@ -21,6 +22,7 @@ defmodule Bot.MixProject do
     [
       {:nostrum, github: "Kraigie/nostrum"},
       {:jason, "~> 1.4"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 end
